@@ -8,6 +8,8 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [cpuInput, setCPUInput] = useState("");
   const [result, setResult] = useState("");
+  const [score, setScore] = useState(0);
+  const [cpuScore, setCpuScore] = useState(0);
 
   function startGame(name) {
     WhoWins(name);
@@ -34,27 +36,41 @@ function App() {
     setUserInput(user);
     setCPUInput(cpu);
     setResult(nextResult);
+    setScore(nextResult === "You win!" ? score + 1 : score);
+    setCpuScore(nextResult === "CPU wins!" ? cpuScore + 1 : cpuScore);
+  }
+
+  function playAgain() {
+    setUserInput("");
+    setCPUInput("");
+    setResult("");
+    setScore(score);
+    setCpuScore(cpuScore);
+    setGameOn(false);
   }
 
   function restartGame() {
     setUserInput("");
     setCPUInput("");
     setResult("");
+    setScore(0);
+    setCpuScore(0);
     setGameOn(false);
   }
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-blue-200 via-purple-200 to-pink-200 px-4 py-6">
       {gameOn ? (
         <GameResults
           restart={restartGame}
           user={userInput}
           cpu={cpuInput}
           result={result}
+          playAgain={playAgain}
+          score={score}
+          cpuScore={cpuScore}
         />
       ) : (
-          <Input 
-          clickHandler={startGame} 
-          />
+        <Input clickHandler={startGame} />
       )}
     </div>
   );

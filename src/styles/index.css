@@ -2,81 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* **********Game Result UI*************** */
-
-.game-results {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.cards-row {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.card {
-  position: relative;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 0.75rem;
-  overflow: hidden;
-}
-
-.card-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.card-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: #fff;
-}
-
-.label {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.9rem;
-}
-
-/* Losing side animation */
-.loser .card-bg,
-.loser .card-fallback {
-  animation: fadeOutBlur 700ms ease-out forwards;
-}
-
+/* Custom animations for losing cards */
 @keyframes fadeOutBlur {
-  0%   { opacity: 1; filter: blur(0px) grayscale(0%); }
-  100% { opacity: 0.3; filter: blur(2px) grayscale(80%); }
+  0% {
+    opacity: 1;
+    filter: blur(0px) grayscale(0%);
+  }
+  100% {
+    opacity: 0.3;
+    filter: blur(2px) grayscale(80%);
+  }
 }
 
-.result-text {
-  margin-top: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.restart-btn {
-  margin-top: 1.5rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background: #334155;
-  color: white;
-  cursor: pointer;
-}
-.restart-btn:hover {
-  background: #1e293b;
+/* Apply animation to losing cards */
+.loser {
+  animation: fadeOutBlur 700ms ease-out forwards;
 }
