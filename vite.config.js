@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/AirWaterFire-Game',   // <-- IMPORTANT (include the slashes)
+  base: '/AirWaterFire_Game',   // <-- IMPORTANT (include the slashes)
 })
